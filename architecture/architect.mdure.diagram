@@ -1,0 +1,84 @@
+# AWS 2-Tier Architecture Diagram
+
+## Architecture Flow
+
+                Internet Users
+                       |
+                       v
+            Application Load Balancer
+                       |
+        -------------------------------
+        |                             |
+        v                             v
+  App Server 1 (Private AZ-a)   App Server 2 (Private AZ-b)
+        |                             |
+        --------------------------------
+                       |
+                       v
+                Database Layer
+                  (RDS / DB)
+
+---
+
+## Network Architecture
+
+VPC (10.0.0.0/16)
+
+Public Subnets:
+- 10.0.1.0/24 (AZ-a)
+- 10.0.2.0/24 (AZ-b)
+
+Private Subnets:
+- 10.0.3.0/24 (AZ-a)
+- 10.0.4.0/24 (AZ-b)
+
+---
+
+## Components
+
+1. Internet Gateway  
+   Allows internet access to public resources
+
+2. NAT Gateway  
+   Allows private instances to access internet securely
+
+3. Bastion Host  
+   Used to SSH into private EC2 instances
+
+4. Application Load Balancer  
+   Distributes traffic across multiple EC2 instances
+
+5. Auto Scaling Group  
+   Automatically increases/decreases instances
+
+6. CloudWatch  
+   Monitors system performance
+
+7. SNS  
+   Sends alerts via email
+
+---
+
+## Request Flow
+
+User → ALB → Auto Scaling Group → EC2 Instances (Private Subnet)
+
+Admin Access:
+
+User → Bastion Host → Private EC2
+
+---
+
+## High Availability
+
+- Multi Availability Zone deployment
+- Load balancing across instances
+- Auto scaling ensures uptime during high load
+
+---
+
+## Security
+
+- Private subnets for application servers
+- Bastion host for secure SSH access
+- Security groups restrict traffic
