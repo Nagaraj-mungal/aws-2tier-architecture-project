@@ -47,3 +47,4 @@ User → Bastion Host → Private EC2
 - Secure Architecture (Private Subnets)
 - Auto Scaling
 - Monitoring & Alerts
+![Screenshot](screenshots/img1.png)
