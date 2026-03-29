@@ -42,7 +42,9 @@ User → Bastion Host → Private EC2
 ---
 
 ## Features
+## Architecture Diagram
 
+![Architecture](architecture/architecture.png)
 - High Availability (Multi-AZ)
 - Secure Architecture (Private Subnets)
 - Auto Scaling
