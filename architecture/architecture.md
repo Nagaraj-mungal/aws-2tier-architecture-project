@@ -1,4 +1,4 @@
-aws-3tier-architecture-project
+aws-2-tier-architecture-project
 │
 ├── README.md
 │
